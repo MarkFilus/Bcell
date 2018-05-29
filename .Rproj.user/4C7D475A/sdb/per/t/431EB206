@@ -1,0 +1,16 @@
+{
+    "contents" : ".libPaths(\"/home/mchikina/R/x86_64-pc-linux-gnu-library/3.1\")\nload(\"BcellShiny.RData\")\nload(\"GCmiSeq.RData\")\nload(\"geneSet.RData\")\nlibrary(shiny)\nlibrary(shinyBS)\nlibrary(shinybootstrap2)\nshinybootstrap2::withBootstrap2({\nshinyUI(fluidPage(\n  \n  # This is the variable containing the source for the typeahead. It has been truncated to save space.\n  sidebarLayout(\n    sidebarPanel(\n  bsTypeAhead(inputId = \"gene\", label = \"Look up gene (Human symbol):\", value=\"CD19\",choices = geneSet),\n  submitButton(\"Plot Gene\"),\n  tags$small(paste(\n    \"The suggested genes are those for which we have some data. \",\n    \"Genes are missing if they were not detected in more than 10 samples (RNAseq), \",\n    \"were bellow the detection theshold on the Illumina array, \",\n    \"or had no probes on the array.\", sep=\"\\n\"\n  ))\n    ),\n  mainPanel(\n    fluidRow(\ncolumn(width=5,plotOutput(\"plotGCmiseq\", width=450, height = 350)),\n    column(width=5, offset = 1,plotOutput(\"plotGC\", width=450, height = 350))),\n    fluidRow(\n    column(width=6,plotOutput(\"plotRS\", width=600, height = 350)),\n    column(width=6,plotOutput(\"plotSubset\", width=450, height = 350))\n    ))\n)))\n  \n\n})",
+    "created" : 1423156213995.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1615673983",
+    "id" : "431EB206",
+    "lastKnownWriteTime" : 1427812928,
+    "path" : "~/ShinyApps/Bcell/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

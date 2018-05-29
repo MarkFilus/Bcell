@@ -1,0 +1,894 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<base href="_w_369def96b1f12cfa77b27f7f82a06dbaa9deb6622d8972e2/" />
+    <script type="text/javascript">
+(function() {
+  // http://stackoverflow.com/questions/10964966/detect-ie-version-in-javascript
+  function isIE () {
+    var myNav = navigator.userAgent.toLowerCase();
+    return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+  }
+
+  if (isIE() === 8 || isIE() === 9){
+    // Set an absolute base href.
+    baseURL = document.URL;
+    baseURL = baseURL.substring(0, baseURL.lastIndexOf('/'));
+    document.getElementsByTagName('base')[0].setAttribute('href', baseURL + '/_w_369def96b1f12cfa77b27f7f82a06dbaa9deb6622d8972e2/');
+  }
+})();
+</script>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <script src="shared/jquery.js" type="text/javascript"></script>
+  <script src="shared/shiny.js" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="shared/shiny.css"/>
+  <script type="application/shiny-singletons">9a50e3956ff316d92f124ed3f474034588174bb1,657ab97fdd42abbf38d93a1fe0b5fded866852ad,d9824d41b9a6aefe883ba073d83925ecd8434247</script>
+  <link rel="stylesheet" type="text/css" href="shared/bootstrap/css/bootstrap.min.css"/>
+  <script src="shared/bootstrap/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" href="shared/bootstrap/css/bootstrap-responsive.min.css"/>
+  <title>shinyBS Demo Page</title>
+  <link type="text/css" rel="stylesheet" href="demo.css"/>
+  <script src="demo.js"></script>
+  <script src="sbs/shinyBS.js"></script>
+  <link rel="stylesheet" type="text/css" href="sbs/shinyBS.css"/>
+  <link rel="stylesheet" type="text/css" href="shared/selectize/css/selectize.bootstrap2.css"/>
+  <!--[if lt IE 9]>
+  <script src="shared/selectize/js/es5-shim.min.js"></script>
+  <![endif]-->
+  <script src="shared/selectize/js/selectize.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="shared/slider/css/jquery.slider.min.css"/>
+  <script src="shared/slider/js/jquery.slider.min.js"></script>
+<script src="__assets__/sockjs-0.3.min.js"></script>
+<script src="__assets__/shiny-server-pro.js"></script>
+<link rel="stylesheet" type="text/css" href="__assets__/shiny-server.css"/>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20375833-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="pull-right" style="padding-top: 5px;">
+    <button id="bsClose" type="button" class="btn btn-primary sbs-action-button">Stop Demo</button>
+  </div>
+  <div class="tabbable tabs-above">
+    <ul class="nav nav-tabs shiny-tab-input" id="tabset">
+      <li class="active">
+        <a href="#tab-6144-1" data-toggle="tab">Introduction</a>
+      </li>
+      <li>
+        <a href="#tab-6144-2" data-toggle="tab">Navbars</a>
+      </li>
+      <li>
+        <a href="#tab-6144-3" data-toggle="tab">Alerts</a>
+      </li>
+      <li>
+        <a href="#tab-6144-4" data-toggle="tab">Progress Bars</a>
+      </li>
+      <li>
+        <a href="#tab-6144-5" data-toggle="tab">TypeAheads</a>
+      </li>
+      <li>
+        <a href="#tab-6144-6" data-toggle="tab">Tooltips and Popovers</a>
+      </li>
+      <li>
+        <a href="#tab-6144-7" data-toggle="tab">Collapse Panels</a>
+      </li>
+      <li>
+        <a href="#tab-6144-8" data-toggle="tab">Buttons</a>
+      </li>
+      <li>
+        <a href="#tab-6144-9" data-toggle="tab">Tables</a>
+      </li>
+      <li>
+        <a href="#tab-6144-10" data-toggle="tab">Modals</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab-6144-1">
+        <div class="row-fluid">
+          <div class="span12">
+            <h3>shinyBS Demo</h3>
+          </div>
+        </div>
+        <div class="row-fluid">
+          <div class="span6">
+            <p>shinyBS is an R package that makes much of the functionality inherent to Twitter Boostrap available to shiny programmers without the need to make custom html user interfaces. It began as a project to help me better understand how shiny works but I hope it will be useful to others. </p><p>I've created <code>bsDemo()</code> to hopefully help reduce the learning curve for using shinyBS by allowing you to interact with new components directly within a shiny application rather than having to have to rely soley on the help files in R. Each added component is represented by a tab above. Clicking a tab will display a demonstration panel for the component. Each panel is laid out like the example on the right. A brief explanation of a panel follows:</p>
+            <ul>
+              <li>The upper-left section of the panel contains brief explanatory text for the component.</li>
+              <li>The upper-right section contains a minimal example of how the component could be implemented in a ui.R script.</li>
+              <li>The lower-right section contains a minimal example of how the component could be implemented or updated from a server.R script.</li>
+              <li>The lower-middle section contains an interactive example of the component.</li>
+              <li>The lower-left section contains a control panel that allows you to see how changes to the arguments of the component affect the appearance and/or behavior in the example component. The code contained in the ui.R and server.R scripts will also update to reflect the changes you make in the control panel.</li>
+            </ul>
+            <p>Please use the tabs above to explore shinyBS functionality. I have made great efforts to make sure that the code all works under multiple use scenarios but if you find a bug, or if you have suggestions for additional functionality, please contact me at <a href='mailto:ebailey@idem.in.gov'>ebailey@idem.in.gov</a>.</p>
+          </div>
+          <div class="span6">
+            <img src="expic.png"/>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tab-6144-2">
+        <div class="row-fluid">
+          <div class="span7">
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="intro">
+                  <h4>Navbars</h4>
+                  <p><p>Navbars offer a space-efficient way to group your inputs together in your shiny app. Most of the customizations in Twitter Bootstrap are available as arguments in the <code>bsNavBar()</code> function. Any element you add to the navbar will align to the left, unless you add them to the <code>rightItems</code> argument, which will cause them to align to the right.</p><p>Several of shiny's default inputs have been reformatted to look better in the navbar. For example, <code>textInput</code> has had its label changed to a placeholder and has an added 'width' attribute to help save room. New versions of inputs have had <code>bsNav</code> prepended to their names.</p><p>Refer to the help files for shinyBS for additional information about navBar inputs.</p></p>
+                  <hr/>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span3">
+                <div class="section-label">Control Panel</div>
+                <div class="well control-panel">
+                  <small>Use the controls below to manipulate the example to the right. Code to the far right will also update.</small>
+                  <label for="nbBrand">Brand</label>
+                  <input id="nbBrand" type="text" value="navbar"/>
+                  <label class="checkbox" for="nbInvert">
+                    <input id="nbInvert" type="checkbox"/>
+                    <span>Inverse</span>
+                  </label>
+                  <label class="checkbox" for="nbFixed">
+                    <input id="nbFixed" type="checkbox"/>
+                    <span>Fixed to Top</span>
+                  </label>
+                  <hr/>
+                  <h5>Current Navbar Element Values</h5>
+                  <div id="nbDemo" class="shiny-html-output"></div>
+                </div>
+              </div>
+              <div class="span9">
+                <div class="section-label">Example</div>
+                <div class="example-box">
+                  <div style="height: 800px;">
+                    <div id="navBar" class="navbar">
+                      <div class="navbar-inner">
+                        <a class="brand" href="#">shinyBS</a>
+                        <ul class="nav pull-left">
+                          <li>
+                            <a id="nbLink1" type="button" href="#" class="action-button">Link</a>
+                          </li>
+                          <li id="nbdd" class="dropdown sbs-dropdown" data-value="">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              Dropdown
+                              <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li data-value="Apple">
+                                <a tabindex="-1" href="#">Apple</a>
+                              </li>
+                              <li data-value="Pear">
+                                <a tabindex="-1" href="#">Pear</a>
+                              </li>
+                              <li data-value="Banana">
+                                <a tabindex="-1" href="#">Banana</a>
+                              </li>
+                              <li data-value="Grapes">
+                                <a tabindex="-1" href="#">Grapes</a>
+                              </li>
+                              <li data-value="Orange">
+                                <a tabindex="-1" href="#">Orange</a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li class="divider-vertical"></li>
+                          <li class="active">
+                            <a id="nbLink2" href="#" class="sbs-toggle">Toggle</a>
+                          </li>
+                        </ul>
+                        <ul class="nav pull-right">
+                          <li>
+                            <form class="navbar-form">
+                              <input id="nbText" style="width: 75px;" type="text" value="" placeholder="Text Input"/>
+                            </form>
+                          </li>
+                          <li>
+                            <form class="navbar-form">
+                              <button id="nbButton" type="button" class="btn action-button">Button</button>
+                            </form>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span5">
+            <div class="section-label">ui.R</div>
+            <div class="scriptblock">
+              <div id="nbUICode" class="shiny-html-output"></div>
+            </div>
+            <div class="section-label">server.R</div>
+            <div class="scriptblock">
+              <div id="nbServerCode" class="shiny-html-output"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tab-6144-3">
+        <div class="row-fluid">
+          <div class="span7">
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="intro">
+                  <h4>Alerts</h4>
+                  <p><p>Alerts allow you to communicate information to the user on the fly. Begin by creating an alert anchor with the <code>bsAlert()</code> function in the iu.R script. You can then add alerts to this anchor with <code>createAlert()</code> and remove them with <code>closeAlert()</code>.</p><p>By default, new alerts are placed below any alerts already present in the alert anchor but if you set <code>append = FALSE</code> in <code>createAlert()</code> the new alert will overwrite any existing alerts. </p><p> Also by default, alerts will be dismissable by the user with a small &times; in the upper-right corner of the alert. You can override this behavior by setting <code>dismiss = FALSE</code> in <code>createAlert()</code>. The alert can then only be removed using <code>closeAlert()</code> (be sure to set <code>alertId</code> when you create the alert) or by creating a new alert with <code>append = FALSE</code> in the same anchor.</p></p>
+                  <hr/>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span3">
+                <div class="section-label">Control Panel</div>
+                <div class="well control-panel">
+                  <small>Use the controls below to manipulate the example to the right. Code to the far right will also update.</small>
+                  <label class="control-label" for="alType">Type</label>
+                  <select id="alType">
+                    <option value="warning" selected="selected">warning</option>
+                    <option value="info">info</option>
+                    <option value="danger">danger</option>
+                    <option value="success">success</option>
+                  </select>
+                  <script type="application/json" data-for="alType" data-nonempty="">{}</script>
+                  <label class="checkbox" for="alTitle">
+                    <input id="alTitle" type="checkbox"/>
+                    <span>Title</span>
+                  </label>
+                  <label class="checkbox" for="alDis">
+                    <input id="alDis" type="checkbox" checked="checked"/>
+                    <span>Dismissible</span>
+                  </label>
+                  <label class="checkbox" for="alBlock">
+                    <input id="alBlock" type="checkbox"/>
+                    <span>Block</span>
+                  </label>
+                  <label class="checkbox" for="alAppend">
+                    <input id="alAppend" type="checkbox" checked="checked"/>
+                    <span>Append</span>
+                  </label>
+                  <button id="alCreate" type="button" class="btn action-button">Create Alert</button>
+                </div>
+              </div>
+              <div class="span9">
+                <div class="section-label">Example</div>
+                <div class="example-box">
+                  <div class="tbs-alert" id="alert_anchor"> </div>
+                  <p>Alert box text generated by <a href='http://www.gameofipsum.com/'>Game of Ipsum</a>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span5">
+            <div class="section-label">ui.R</div>
+            <div class="scriptblock">
+              <div id="alUICode" class="shiny-html-output"></div>
+            </div>
+            <div class="section-label">server.R</div>
+            <div class="scriptblock">
+              <div id="alServerCode" class="shiny-html-output"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tab-6144-4">
+        <div class="row-fluid">
+          <div class="span7">
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="intro">
+                  <h4>Progress Bars</h4>
+                  <p><p>Progress bars are created with the <code>bsProgressBar()</code> function in ui.R and then modified with <code>updateProgressBar()</code> in server.R.</p><p>If you don't want the progress bar to be present all the time you should still create it in your ui.R script but set <code>visible = FALSE</code>. You can then use <code>updateProgressBar()</code> to make it visible when you want it.</p><p>The easiest use for them would be in some sort of loop where you can add an <code>updateProgressBar()</code> to the code in the loop to reflect how much of the loop has completed. </p><p> The <code>color</code> argument corresponds to the same predefined classes that alerts have, with the addition of a darker blue 'standard' option.</p> </p>
+                  <hr/>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span3">
+                <div class="section-label">Control Panel</div>
+                <div class="well control-panel">
+                  <small>Use the controls below to manipulate the example to the right. Code to the far right will also update.</small>
+                  <div>
+                    <label class="control-label" for="pbnumb">Percent Complete</label>
+                    <input id="pbnumb" type="slider" name="pbnumb" value="50" class="jslider" data-from="0" data-to="100" data-step="1" data-skin="plastic" data-round="FALSE" data-locale="us" data-format="#,##0.#####" data-smooth="FALSE"/>
+                  </div>
+                  <label class="control-label" for="pbselect">Color</label>
+                  <select id="pbselect">
+                    <option value="standard" selected="selected">standard</option>
+                    <option value="warning">warning</option>
+                    <option value="info">info</option>
+                    <option value="danger">danger</option>
+                    <option value="success">success</option>
+                  </select>
+                  <script type="application/json" data-for="pbselect" data-nonempty="">{}</script>
+                  <div id="pbradio" class="control-group shiny-input-radiogroup">
+                    <label class="control-label" for="pbradio">Style</label>
+                    <label class="radio">
+                      <input type="radio" name="pbradio" id="pbradio1" value="none" checked="checked"/>
+                      <span>none</span>
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="pbradio" id="pbradio2" value="striped"/>
+                      <span>striped</span>
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="pbradio" id="pbradio3" value="animated"/>
+                      <span>animated</span>
+                    </label>
+                  </div>
+                  <label class="checkbox" for="pbcb">
+                    <input id="pbcb" type="checkbox"/>
+                    <span>Hidden</span>
+                  </label>
+                </div>
+              </div>
+              <div class="span9">
+                <div class="section-label">Example</div>
+                <div class="example-box">
+                  <div class="progress" id="pb1">
+                    <div class="bar" style="width: 50%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span5">
+            <div class="section-label">ui.R</div>
+            <div class="scriptblock">
+              <div id="pbUICode" class="shiny-html-output"></div>
+            </div>
+            <div class="section-label">server.R</div>
+            <div class="scriptblock">
+              <div id="pbServerCode" class="shiny-html-output"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tab-6144-5">
+        <div class="row-fluid">
+          <div class="span7">
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="intro">
+                  <h4>TypeAheads</h4>
+                  <p><p>TypeAhead boxes are special versions of textboxes that help lead the user to acceptable inputs. They are created with the <code>bsTypeAhead()</code> function and can be updated with <code>updateTypeAhead()</code>. You can set the minimum match length and number of items to display at creation, but these properties cannot be changed by <code>updateTypeAhead()</code>.</p><p>The example below allows you to choose between three predefined vectors for the <em>choice</em> arugment but any reality any vector or list can be used.</p></p>
+                  <hr/>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span3">
+                <div class="section-label">Control Panel</div>
+                <div class="well control-panel">
+                  <small>Use the controls below to manipulate the example to the right. Code to the far right will also update.</small>
+                  <label for="taLabel">Label</label>
+                  <input id="taLabel" type="text" value="TypeAhead:"/>
+                  <label class="control-label" for="taChoice">Choices</label>
+                  <select id="taChoice">
+                    <option value="Pollutants" selected="selected">Pollutants</option>
+                    <option value="Fruits and Vegetables">Fruits and Vegetables</option>
+                    <option value="Animals">Animals</option>
+                  </select>
+                  <script type="application/json" data-for="taChoice" data-nonempty="">{}</script>
+                </div>
+              </div>
+              <div class="span9">
+                <div class="section-label">Example</div>
+                <div class="example-box">
+                  <label for="ta1">TypeAhead:</label>
+                  <input id="ta1" type="text" class="sbs-typeahead" data-provide="typeahead" data-source="[&quot;Acetone&quot;, &quot;Acrolein&quot;, &quot;Benzene&quot;, &quot;Benzyl Chloride&quot;, &quot;Bromodichloromethane&quot;, &quot;Bromoform&quot;, &quot;Bromomethane&quot;, &quot;1,3-Butadiene&quot;, &quot;Carbon Disulfide&quot;, &quot;Carbon Tetrachloride&quot;, &quot;Chlorobenzene&quot;, &quot;Chloroethane&quot;, &quot;Chloroform&quot;, &quot;Chloromethane&quot;, &quot;Cyclohexane&quot;, &quot;Dibromochloromethane&quot;, &quot;1,2-Dibromoethane&quot;, &quot;m-Dichlorobenzene&quot;, &quot;p-Dichlorobenzene&quot;, &quot;o-Dichlorobenzene&quot;, &quot;Dichlorodifluoromethane (F-12)&quot;, &quot;1,1-Dichloroethane&quot;, &quot;1,2-Dichloroethane&quot;, &quot;t-1,2-Dichloroethene&quot;, &quot;c-1,2-Dichloroethene&quot;, &quot;Dichloromethane&quot;, &quot;1,2-Dichloropropane&quot;, &quot;c-1,3-Dichloropropene&quot;, &quot;t-1,3-Dichloropropene&quot;, &quot;Dichloro-Tetrafluoroethane (F-114)&quot;, &quot;1,4-Dioxane&quot;, &quot;Ethanol&quot;, &quot;Ethyl Acetate&quot;, &quot;Ethylbenzene&quot;, &quot;p-Ethyltoluene&quot;, &quot;Heptane&quot;, &quot;Hexachlorobutadiene&quot;, &quot;Hexane&quot;, &quot;Isopropanol&quot;, &quot;Methyl Ethyl Ketone (MEK)&quot;, &quot;Methyl Isobutyl Ketone (MIBK)&quot;, &quot;Methyl n-Butyl Ketone (MBK)&quot;, &quot;Methyl Tert-Butyl Ether (MTBE)&quot;, &quot;Propene&quot;, &quot;Styrene&quot;, &quot;1,1,2,2-Tetrachloroethane&quot;, &quot;Tetrachloroethene (PCE)&quot;, &quot;Tetrahydrofuran (THF)&quot;, &quot;Toluene&quot;, &quot;Trichlorotrifluoroethane (F-113)&quot;, &quot;1,2,4-Trichlorobenzene&quot;, &quot;1,1,1-Trichloroethane&quot;, &quot;1,1,2-Trichloroethane&quot;, &quot;Trichloroethene (TCE)&quot;, &quot;Trichlorofluoromethane (F-11)&quot;, &quot;1,3,5-Trimethylbenzene&quot;, &quot;1,2,4-Trimethylbenzene&quot;, &quot;Vinyl Acetate&quot;, &quot;Vinyl Chloride&quot;, &quot;Vinylidene Chloride&quot;, &quot;o-Xylene&quot;, &quot;m+p-Xylenes&quot;]" data-items="4" data-minLength="1" autocomplete="off" value=""/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span5">
+            <div class="section-label">ui.R</div>
+            <div class="scriptblock">
+              <div id="taUICode" class="shiny-html-output"></div>
+            </div>
+            <div class="section-label">server.R</div>
+            <div class="scriptblock">
+              <div id="taServerCode" class="shiny-html-output"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tab-6144-6">
+        <div class="row-fluid">
+          <div class="span7">
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="intro">
+                  <h4>Tooltips and Popovers</h4>
+                  <p><p>Tooltips and popovers are added in very similar ways. Tooltips/Popovers can be added to any element with an <code>inputId</code> or an <code>outputId</code> by using <code>bsTooltip()</code> in ui.R, or <code>addTooltip()</code> in server.R. Similarly, you can remove tooltips and popovers from an object by using <code>removeTooltip()</code> and <code>removePopover()</code>, respectively.</p><p>Tooltips would generally be used to provide <em>brief</em> additional information about an input or output element. Popovers can contain much more detailed information but currently cannot contain shiny inputs or outputs. I hope to figure out how to incorporate them in a future release.</p><p>Some tooltips and popovers have already been added to the example below. These are used to illustrate how they can be added in the ui.R script. You can add your own tooltips and popovers from the control panel. The code for these will be shown in the server.R script.</p>
+                  <hr/>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span3">
+                <div class="section-label">Control Panel</div>
+                <div class="well control-panel">
+                  <small>Use the controls below to manipulate the example to the right. Code to the far right will also update.</small>
+                  <label class="control-label" for="tpTarget">Target</label>
+                  <select id="tpTarget">
+                    <option value="link" selected="selected">link</option>
+                    <option value="slider">slider</option>
+                    <option value="select">select</option>
+                    <option value="text">text</option>
+                    <option value="plot">plot</option>
+                  </select>
+                  <script type="application/json" data-for="tpTarget" data-nonempty="">{}</script>
+                  <div id="tpType" class="control-group shiny-input-radiogroup">
+                    <label class="control-label" for="tpType">Type</label>
+                    <label class="radio">
+                      <input type="radio" name="tpType" id="tpType1" value="Tooltip" checked="checked"/>
+                      <span>Tooltip</span>
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="tpType" id="tpType2" value="Popover"/>
+                      <span>Popover</span>
+                    </label>
+                  </div>
+                  <label for="tpTitle">Title</label>
+                  <input id="tpTitle" type="text" value="A tooltip"/>
+                  <div data-display-if="input.tpType == &#39;Popover&#39;">
+                    <label for="tpContent">Content</label>
+                    <input id="tpContent" type="text" value="This is content. Isn&#39;t it &lt;b&gt;great!&lt;/b&gt;"/>
+                  </div>
+                  <label class="control-label" for="tpPlacement">Placement</label>
+                  <select id="tpPlacement">
+                    <option value="top" selected="selected">top</option>
+                    <option value="bottom">bottom</option>
+                    <option value="left">left</option>
+                    <option value="right">right</option>
+                  </select>
+                  <script type="application/json" data-for="tpPlacement" data-nonempty="">{}</script>
+                  <div id="tpTrigger" class="control-group shiny-input-radiogroup">
+                    <label class="control-label" for="tpTrigger">Triggers</label>
+                    <label class="radio">
+                      <input type="radio" name="tpTrigger" id="tpTrigger1" value="click"/>
+                      <span>click</span>
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="tpTrigger" id="tpTrigger2" value="hover" checked="checked"/>
+                      <span>hover</span>
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="tpTrigger" id="tpTrigger3" value="focus"/>
+                      <span>focus</span>
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="tpTrigger" id="tpTrigger4" value="manual"/>
+                      <span>manual</span>
+                    </label>
+                  </div>
+                  <button id="tpAdd" type="button" class="btn action-button">Add</button>
+                </div>
+              </div>
+              <div class="span9">
+                <div class="section-label">Example</div>
+                <div class="example-box">
+                  <p>This is some example text. It is here so that I can put a <a id = "tplink" href = "#">link</a> in the example. I've given the link an id attribute so that tooltips and popovers can be assigned to it. Otherwise this example is an expansion of the '01_Hello' example that is part of shiny. </p>
+                  <div class="row-fluid">
+                    <div class="span3 well control-panel">
+                      <div>
+                        <label class="control-label" for="tpobs">Number of observations:</label>
+                        <input id="tpobs" type="slider" name="tpobs" value="500" class="jslider" data-from="1" data-to="1000" data-step="1" data-skin="plastic" data-round="FALSE" data-locale="us" data-format="#,##0.#####" data-smooth="FALSE"/>
+                      </div>
+                      <label class="control-label" for="tpdist">Distribution</label>
+                      <select id="tpdist">
+                        <option value="Normal" selected="selected">Normal</option>
+                        <option value="Lognormal">Lognormal</option>
+                        <option value="Uniform">Uniform</option>
+                        <option value="Exponential">Exponential</option>
+                      </select>
+                      <script type="application/json" data-for="tpdist" data-nonempty="">{}</script>
+                      <label for="tptitle">Plot Title</label>
+                      <input id="tptitle" type="text" value="A Plot"/>
+                    </div>
+                    <div class="span9">
+                      <div id="tpplot" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
+                    </div>
+                  </div>
+                  <script>$(document).ready(function() {setTimeout(function() {addTooltip('tpobs', 'This changes the sample size of the random data set.', 'right', 'hover')}, 100)});</script>
+                  <script>$(document).ready(function() {setTimeout(function() {addTooltip('tpdist', 'This allows changes to the distribution', 'right', 'hover')}, 100)});</script>
+                  <script>$(document).ready(function() {setTimeout(function() {addTooltip('tptitle', 'Add a custom title to the plot', 'right', 'hover')}, 100)});</script>
+                  <script>$(document).ready(function() {setTimeout(function() {addTooltip('tpplot', 'Click plot to show popover', 'top', 'hover')}, 100)});</script>
+                  <script>$(document).ready(function() {setTimeout(function() {addPopover('tpplot', 'Boxplot', 'I really wanted to have a boxplot based on the same dataset as the histogram appear in this box. Unfortunately, it appears that popovers are written when they are shown and destroyed when they are hidden so there is nothing persistent for shiny to bind to. So instead of a plot you get this text...', 'right', 'click')}, 100);})</script>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span5">
+            <div class="section-label">ui.R</div>
+            <div class="scriptblock">
+              <div id="tpUICode" class="shiny-html-output"></div>
+            </div>
+            <div class="section-label">server.R</div>
+            <div class="scriptblock">
+              <div id="tpServerCode" class="shiny-html-output"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tab-6144-7">
+        <div class="row-fluid">
+          <div class="span7">
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="intro">
+                  <h4>Collapse Panels</h4>
+                  <p><p>Collapses (sometimes called accordions) are an alternative way to segment information and free up space in your shiny app. They have been designed to work in a very similar way to <code>tabsetPanel()</code> and <code>tabPanel()</code>. Create a collapse group with <code>bsCollapse()</code> and include any number of panels in it with <code>bsCollapsePanel()</code>.</p><p>Similar to <code>tabsetPanel()</code>, <code>bsCollapse()</code> will return the value of the panel that is currently open. If <code>multiple = TRUE</code> then it will return an array of all open panel values.</p><p>You can use <code>updateCollapse()</code> to open and close panels or turn <code>multiple</code> on and off from server.R.</p><p>In some cases, collapse panels did not render properly when testing in Internet Explorer 10.</p></p>
+                  <hr/>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span3">
+                <div class="section-label">Control Panel</div>
+                <div class="well control-panel">
+                  <small>Use the controls below to manipulate the example to the right. Code to the far right will also update.</small>
+                  <label class="checkbox" for="coMult">
+                    <input id="coMult" type="checkbox"/>
+                    <span>Multiple</span>
+                  </label>
+                  <div id="coOpen" class="control-group shiny-input-checkboxgroup">
+                    <label class="control-label" for="coOpen">Open</label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="coOpen" id="coOpen1" value="col1"/>
+                      <span>Collapse #1</span>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="coOpen" id="coOpen2" value="col2"/>
+                      <span>Collapse #2</span>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="coOpen" id="coOpen3" value="col3"/>
+                      <span>Collapse #3</span>
+                    </label>
+                  </div>
+                  <div id="coClose" class="control-group shiny-input-checkboxgroup">
+                    <label class="control-label" for="coClose">Close</label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="coClose" id="coClose1" value="col1"/>
+                      <span>Collapse #1</span>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="coClose" id="coClose2" value="col2"/>
+                      <span>Collapse #2</span>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="coClose" id="coClose3" value="col3"/>
+                      <span>Collapse #3</span>
+                    </label>
+                  </div>
+                  <button id="coUpdate" type="button" class="btn action-button">Update</button>
+                  <h5>Output</h5>
+                  <div id="coValue" class="shiny-text-output"></div>
+                </div>
+              </div>
+              <div class="span9">
+                <div class="section-label">Example</div>
+                <div class="example-box">
+                  <div class="accordion" id="collapse1" data-multiple="FALSE">
+                    <div class="accordion-group">
+                      <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" href="#col1">Collapse #1</a>
+                      </div>
+                      <div class="accordion-body collapse in" id="col1" data-value="test1">
+                        <div class="accordion-inner">Cell treachery spearwife night's watch, tower suckling pig, drink, your king commands it spare me your false courtesy tourney. Feed it to the goats, seven hells lord of light as high as honor in his cups. Sword greyscale old bear none so wise godswood the last of the dragons rouse me not. No foe may pass bloody mummers, let me soar spiced wine your grace honed and ready fire.</div>
+                      </div>
+                    </div>
+                    <div class="accordion-group">
+                      <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" href="#col2">Collapse #2</a>
+                      </div>
+                      <div class="accordion-body collapse" id="col2" data-value="test2">
+                        <div class="accordion-inner">
+                          <button id="btn123" type="button" class="btn action-button">A Button</button>
+                          <label for="txt1234">A Text Input</label>
+                          <input id="txt1234" type="text" value=""/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-group">
+                      <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" href="#col3">Collapse #3</a>
+                      </div>
+                      <div class="accordion-body collapse" id="col3" data-value="test3">
+                        <div class="accordion-inner">
+                          <div id="testPlot1" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span5">
+            <div class="section-label">ui.R</div>
+            <div class="scriptblock">
+              <div id="coUICode" class="shiny-html-output"></div>
+            </div>
+            <div class="section-label">server.R</div>
+            <div class="scriptblock">
+              <div id="coServerCode" class="shiny-html-output"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tab-6144-8">
+        <div class="row-fluid">
+          <div class="span7">
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="intro">
+                  <h4>Buttons</h4>
+                  <p><p><code>actionButtons</code> are already a part of shiny but by using <code>bsActionButton()</code> you can create action buttons that can be sized and styled using Twitter Bootstrap's default styles (primary, info, success, warning, danger, inverse, and link) and sizes (large, small, and mini). You can also disable and enable the action button using the <code>disabled</code> argument at creation or in <code>updateButton()</code>.</p><p>There is also a <code>bsToggleButton()</code> function that allows the creation of a button that can be toggled on/off; returning TRUE/FALSE depending on its current state. Toggle buttons can be styled the same as the action buttons previously mentioned.</p><p>Button Groups offer functionality similar to <code>radioButtons()</code> or <code>checkBoxGroupInput()</code>, depending on the value of the <code>toggle</code> argument. Create a button group by starting with <code>bsButtonGroup()</code> and adding <code>bsButton()</code> objects to it. Similar to how tabs are added in <code>tabsetPanel()</code>. Buttons in a button group can be individually styled, or if the <code>style</code>, <code>size</code>, or <code>disabled</code> argument is supplied to <code>bsButtonGroup()</code> these values will be applied to all buttons in the group.</p></p>
+                  <hr/>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span3">
+                <div class="section-label">Control Panel</div>
+                <div class="well control-panel">
+                  <small>Use the controls below to manipulate the example to the right. Code to the far right will also update.</small>
+                  <div id="bgToggle" class="control-group shiny-input-radiogroup">
+                    <label class="control-label" for="bgToggle">toggle</label>
+                    <label class="radio">
+                      <input type="radio" name="bgToggle" id="bgToggle1" value="radio" checked="checked"/>
+                      <span>radio</span>
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="bgToggle" id="bgToggle2" value="checkbox"/>
+                      <span>checkbox</span>
+                    </label>
+                  </div>
+                  <label class="control-label" for="bgSize">Size</label>
+                  <select id="bgSize">
+                    <option value="large">large</option>
+                    <option value="default" selected="selected">default</option>
+                    <option value="small">small</option>
+                    <option value="mini">mini</option>
+                  </select>
+                  <script type="application/json" data-for="bgSize" data-nonempty="">{}</script>
+                  <label class="control-label" for="bgStyle">Style</label>
+                  <select id="bgStyle">
+                    <option value="default" selected="selected">default</option>
+                    <option value="primary">primary</option>
+                    <option value="info">info</option>
+                    <option value="success">success</option>
+                    <option value="warning">warning</option>
+                    <option value="danger">danger</option>
+                    <option value="inverse">inverse</option>
+                    <option value="link">link</option>
+                  </select>
+                  <script type="application/json" data-for="bgStyle" data-nonempty="">{}</script>
+                  <label class="checkbox" for="bgDisabled">
+                    <input id="bgDisabled" type="checkbox"/>
+                    <span>Disabled</span>
+                  </label>
+                  <div id="bgValue" class="control-group shiny-input-checkboxgroup">
+                    <label class="control-label" for="bgValue">Value</label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="bgValue" id="bgValue1" value="left"/>
+                      <span>left</span>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="bgValue" id="bgValue2" value="middle"/>
+                      <span>middle</span>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="bgValue" id="bgValue3" value="right" checked="checked"/>
+                      <span>right</span>
+                    </label>
+                  </div>
+                  <p><b>Input Values</b></p>
+                  <div id="bgValue" class="shiny-html-output"></div>
+                </div>
+              </div>
+              <div class="span9">
+                <div class="section-label">Example</div>
+                <div class="example-box">
+                  <button id="ab1" type="button" class="btn sbs-action-button">bsActionButton</button>
+                  <button id="tb1" type="button" class="btn sbs-toggle-button" data-toggle="button">bsToggleButton</button>
+                  <p></p>
+                  <label for="btngrp1">bsButtonGroup</label>
+                  <div id="btngrp1" class="btn-group sbs-button-group" data-toggle="buttons-radio">
+                    <button id="btn1" type="button" class="btn sbs-btn" data-value="left">Left</button>
+                    <button id="btn2" type="button" class="btn sbs-btn" data-value="middle">Middle</button>
+                    <button id="btn3" type="button" class="btn sbs-btn active bs-active" data-value="right">Right</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span5">
+            <div class="section-label">ui.R</div>
+            <div class="scriptblock">
+              <div id="bgUICode" class="shiny-html-output"></div>
+            </div>
+            <div class="section-label">server.R</div>
+            <div class="scriptblock">
+              <div id="bgServerCode" class="shiny-html-output"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tab-6144-9">
+        <div class="row-fluid">
+          <div class="span7">
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="intro">
+                  <h4>Tables</h4>
+                  <p><p><strong>These functions are experimental and may change significantly.</strong> The idea is to be able to highlight cells or rows based on their contents. You can match cells based on a numeric range with the <code>min</code> and <code>max</code> arguments or use the <code>regex</code> argument to use regular expresssions for cell matching.</p><p><code>highlightCells()</code> is used for highlighting individual cells and <code>highlightRows()</code> is used for highlighting entire rows. Both functions use the same arguments with <code>highlightRows()</code> having an additional <code>column</code> argument for indicating the column to search. You can supply the <code>column</code> argument with the value that appears in the top row or with a numeric index value for the column. <code>highlightCells()</code> also has a <code>skip.row.names</code> argument for skipping the first column in a table.</p><p>Cells can be styled with the <code>class</code> or <code>style</code> arguments. <code>class</code> can be one of eight predefined classes (success, warning, error, info, good, bad, neutral, disabled) or any class you have defined. If you use the <code>style</code> argument its contents will be directly inserted into the <code>style</code> attribute of matching td and tr elements.</p></p>
+                  <hr/>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span3">
+                <div class="section-label">Control Panel</div>
+                <div class="well control-panel">
+                  <small>Use the controls below to manipulate the example to the right. Code to the far right will also update.</small>
+                  <label class="control-label" for="htClass">Class</label>
+                  <select id="htClass">
+                    <option value="none" selected="selected">none</option>
+                    <option value="success">success</option>
+                    <option value="warning">warning</option>
+                    <option value="error">error</option>
+                    <option value="info">info</option>
+                    <option value="good">good</option>
+                    <option value="bad">bad</option>
+                    <option value="neutral">neutral</option>
+                  </select>
+                  <script type="application/json" data-for="htClass" data-nonempty="">{}</script>
+                  <label for="htStyle">Style</label>
+                  <input id="htStyle" type="text" value=""/>
+                  <label for="htCol">Column</label>
+                  <input id="htCol" type="text" value=""/>
+                  <label for="htMin">Min</label>
+                  <input id="htMin" type="text" value=""/>
+                  <label for="htMax">Max</label>
+                  <input id="htMax" type="text" value=""/>
+                  <label for="htText">Text</label>
+                  <input id="htText" type="text" value=""/>
+                  <label class="checkbox" for="htReset">
+                    <input id="htReset" type="checkbox"/>
+                    <span>Reset Highlighting</span>
+                  </label>
+                  <button id="htAdd" type="button" class="btn btn-block sbs-action-button">highlightCells()</button>
+                  <button id="htRow" type="button" class="btn btn-block sbs-action-button">highlightRows()</button>
+                </div>
+              </div>
+              <div class="span9">
+                <div class="section-label">Example</div>
+                <div class="example-box">
+                  <p style="font-weight: bold; text-align: center;">2013 Sales Figures</p>
+                  <div id="htTable" class="shiny-html-output"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span5">
+            <div class="section-label">ui.R</div>
+            <div class="scriptblock">
+              <div id="htUICode" class="shiny-html-output"></div>
+            </div>
+            <div class="section-label">server.R</div>
+            <div class="scriptblock">
+              <div id="htServerCode" class="shiny-html-output"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tab-6144-10">
+        <div class="row-fluid">
+          <div class="span7">
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="intro">
+                  <h4>Modals</h4>
+                  <p><p>Modals are popup windows that can contain any html objects you want. You can either build the content of the modal window with R code or you can set the <code>href</code> argument to the location of a html file and have the html file loaded into the body of the modal.</p><p>Modals need to be linked to a button or anchor in the app. You create this link by setting the trigger argument in <code>bsModal()</code> to the id of the button or anchor you want to open the modal.</p><p>Modals are shiny inputs that return TRUE or FALSE based on whether they are currently visible.</p><p>You can open and/or close a modal from <code>server.R</code> by using the <code>toggleModal()</code> function.</p></p>
+                  <hr/>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span3">
+                <div class="section-label">Control Panel</div>
+                <div class="well control-panel">
+                  <small>Use the controls below to manipulate the example to the right. Code to the far right will also update.</small>
+                  <button id="moTog1" type="button" class="btn action-button">Toggle Modal</button>
+                  <p></p>
+                  <div id="moValue" class="shiny-text-output"></div>
+                </div>
+              </div>
+              <div class="span9">
+                <div class="section-label">Example</div>
+                <div class="example-box">
+                  <button id="moTrig" type="button" class="btn sbs-btn btn-primary">Open Modal</button>
+                  <button id="moTrig2" type="button" class="btn sbs-btn btn-primary">Open Remote Modal</button>
+                  <div class="modal sbs-modal hide fade" id="moMod" data-trigger="moTrig">
+                    <div class="modal-header">
+                      <button Type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h3>Example Modal</h3>
+                    </div>
+                    <div class="modal-body">
+                      <p>Modals can contain anything:</p>
+                      <div class="row-fluid">
+                        <div class="span4 well control-panel">
+                          <div>
+                            <label class="control-label" for="moobs">Number of observations:</label>
+                            <input id="moobs" type="slider" name="moobs" value="500" class="jslider" data-from="1" data-to="1000" data-step="1" data-skin="plastic" data-round="FALSE" data-locale="us" data-format="#,##0.#####" data-smooth="FALSE"/>
+                          </div>
+                          <label class="control-label" for="modist">Distribution</label>
+                          <select id="modist">
+                            <option value="Normal" selected="selected">Normal</option>
+                            <option value="Lognormal">Lognormal</option>
+                            <option value="Uniform">Uniform</option>
+                            <option value="Exponential">Exponential</option>
+                          </select>
+                          <script type="application/json" data-for="modist" data-nonempty="">{}</script>
+                          <label for="motitle">Plot Title</label>
+                          <input id="motitle" type="text" value="A Modal Plot"/>
+                        </div>
+                        <div class="span8">
+                          <div id="moplot" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="#" class="btn" data-dismiss="modal">Close</a>
+                    </div>
+                  </div>
+                  <div class="modal sbs-modal hide fade" id="moMod2" data-trigger="moTrig2" data-remote="moDemo.html">
+                    <div class="modal-header">
+                      <button Type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h3>A Remote Modal</h3>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer">
+                      <a href="#" class="btn" data-dismiss="modal">Close</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span5">
+            <div class="section-label">ui.R</div>
+            <div class="scriptblock">
+              <div id="moUICode" class="shiny-html-output"></div>
+            </div>
+            <div class="section-label">server.R</div>
+            <div class="scriptblock">
+              <div id="moServerCode" class="shiny-html-output"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
