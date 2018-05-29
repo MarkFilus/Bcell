@@ -1,23 +1,23 @@
 library(shiny)
 #.libPaths("/home/mchikina/R/x86_64-pc-linux-gnu-library/3.4/","/home/mchikina/R/x86_64-pc-linux-gnu-library/3.1/")
 #print(.libPaths())
-#load("BcellShinyUpdate.RData")
-#load("newRNAseq.RData")
-#load("dxGCresult.RData")
-#load("geneSet.RData")
-#load("geneSet2.RData")
-#load("Human2Mouse.RData")
-#library(ggplot2)
-#library(gridExtra)
-#library(grid)
-#library(RColorBrewer)
-#library(DEXSeq)
-#source("DEXseqhelper.R")
-#splicegenes=unique(sub(":.*","",rownames(dxrGC)))
+load("BcellShinyUpdate.RData")
+load("newRNAseq.RData")
+load("dxGCresult.RData")
+load("geneSet.RData")
+load("geneSet2.RData")
+load("Human2Mouse.RData")
+library(ggplot2)
+library(gridExtra)
+library(grid)
+library(RColorBrewer)
+library(DEXSeq)
+source("DEXseqhelper.R")
+splicegenes=unique(sub(":.*","",rownames(dxrGC)))
 
 
 
-#library(shinyBS)
+library(shinyBS)
 
 
 plotRS=function(input){
