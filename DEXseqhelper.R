@@ -1,4 +1,4 @@
-myplotDEXSeq=function (object, geneID, FDR = 0.1, fitExpToVar, 
+myplotDEXSeq = function(object, geneID, FDR = 0.1, fitExpToVar, 
           norCounts = FALSE, expression = TRUE, splicing = FALSE, displayTranscripts = FALSE, 
           names = FALSE, legend = FALSE, color = NULL, color.samples = NULL, 
           ...) 

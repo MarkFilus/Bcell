@@ -1,5 +1,4 @@
 library(shiny)
-#.libPaths("/home/mchikina/R/x86_64-pc-linux-gnu-library/3.4","/home/mchikina/R/x86_64-pc-linux-gnu-library/3.1")
 load("BcellShinyUpdate.RData")
 load("GCmiSeq.RData")
 load("newRNAseq.RData")
@@ -9,7 +8,8 @@ library(shiny)
 library(shinyBS)
 library(shinybootstrap2)
 shinybootstrap2::withBootstrap2({
-  shinyUI(fluidPage(# This is the variable containing the source for the typeahead. It has been truncated to save space.
+  shinyUI(fluidPage(# This is the variable containing the source for the typeahead. 
+                    # It has been truncated to save space.
     sidebarLayout(
       sidebarPanel(
         bsTypeAhead(
@@ -35,7 +35,6 @@ shinybootstrap2::withBootstrap2({
       ),
       mainPanel(fluidRow(
         column(width = 12, plotOutput("plotGCmiseq", width = "100%")),
-        
         fluidRow(
           column(width = 5, plotOutput("plotGC")),
           column(width = 6, plotOutput(
@@ -45,7 +44,6 @@ shinybootstrap2::withBootstrap2({
         ),
         fluidRow(plotOutput("plotSplicing")),
         fluidRow(tags$small(""))
-        
       ))
     )))
 })
