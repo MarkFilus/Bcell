@@ -1,0 +1,16 @@
+sample	grp	rep
+Long1_25	DN_memory	1
+Long1_26	SP_memory	1
+Long1_27	DP_memory	1
+Long1_28	TL_memory	1
+Long1_29	Naive_mem	1
+Long2_07	DN_memory	2
+Long2_08	SP_memory	2
+Long2_09	DP_memory	2
+Long2_10	TL_memory	2
+Long2_11	Naive_mem	2
+Long3_A001Aligned.sortedByCoord.out.bam	DN_memory	3
+Long3_B001Aligned.sortedByCoord.out.bam	SP_memory	3
+Long3_C001Aligned.sortedByCoord.out.bam	DP_memory	3
+Long3_D001Aligned.sortedByCoord.out.bam	TL_memory	3
+Long3_E001Aligned.sortedByCoord.out.bam	Naive_mem	3

@@ -1,135 +1,158 @@
 library(shiny)
 
-load("BcellShinyUpdate.RData")
-load("newRNAseq.RData")
-load("dxGCresult.RData")
-load("geneSet.RData")
-load("geneSet2.RData")
-load("Human2Mouse.RData")
+# load("BcellShinyUpdate.RData")
+# load("newRNAseq.RData")
+# load("dxGCresult.RData")
+# load("geneSet.RData")
+load("/home/mjf106/Bcell/geneSet2.RData")
+# load("Human2Mouse.RData")
 library(ggplot2)
 library(gridExtra)
 library(grid)
 library(RColorBrewer)
-library(DEXSeq)
-source("DEXseqhelper.R")
-splicegenes = unique(sub(":.*", "", rownames(dxrGC)))
+#library(DEXSeq)
+#source("DEXseqhelper.R")
+#splicegenes = unique(sub(":.*", "", rownames(dxrGC)))
 
 
 
 library(shinyBS)
 
 
-plotRS = function(input) {
-  gene = sub(" - .*", "", isolate(input$gene))
-  if (!is.na(match(gene, rownames(data)))) {
-    theme_set(theme_bw())
-    df = list()
-    
-    df$y = data[gene, ]
-    df$x = 1:ncol(data)
-    df$col = facts
-    df$pop = pop
-    df = as.data.frame(df)
-    p <-
-      ggplot(df, aes(
-        x = x,
-        y = y,
-        color = col,
-        shape = pop
-      )) + geom_point(size = 5) + ylab("counts") +
-      scale_shape_manual(values = c(1, 19)) +
-      ggtitle("RNAseq") + theme(text = element_text(size =
-                                                      20))
-    print(p)
-  }
-  else{
-    grid.text(label = paste("Gene:", gene, "is not in dataset"))
-  }
-}
+# plotRS = function(input) {
+#   gene = sub(" - .*", "", isolate(input$gene))
+#   if (!is.na(match(gene, rownames(data)))) {
+#     theme_set(theme_bw())
+#     df = list()
+#     
+#     df$y = data[gene, ]
+#     df$x = 1:ncol(data)
+#     df$col = facts
+#     df$pop = pop
+#     df = as.data.frame(df)
+#     p <-
+#       ggplot(df, aes(
+#         x = x,
+#         y = y,
+#         color = col,
+#         shape = pop
+#       )) + geom_point(size = 5) + ylab("counts") +
+#       scale_shape_manual(values = c(1, 19)) +
+#       ggtitle("RNAseq") + theme(text = element_text(size =
+#                                                       20))
+#     print(p)
+#   }
+#   else{
+#     grid.text(label = paste("Gene:", gene, "is not in dataset"))
+#   }
+# }
 
-plotSubset = function(input) {
-  gene = sub(" - .*", "", isolate(input$gene))
-  if (!is.na(match(gene, rownames(subset)))) {
-    theme_set(theme_bw())
-    df = list()
-    df$y = subset[gene, ]
-    df$x = 1:length(df$y)
-    df$col = subset.f
-    df = as.data.frame(df)
-    p <- ggplot(df, aes(
-      x = col,
-      y = y,
-      color = col,
-      ymin = mean(y),
-      ymax = mean(y)
-    )) +
-      geom_pointrange(size = 2) + ylab("log2 Intensity") +
-      ggtitle("SubsetArray") + theme(text = element_text(size = 20))
-    print(p)
-  }
-  else{
-    grid.text(label = paste("Gene:", gene, "is not in dataset"))
-  }
-}
+# plotSubset = function(input) {
+#   gene = sub(" - .*", "", isolate(input$gene))
+#   if (!is.na(match(gene, rownames(subset)))) {
+#     theme_set(theme_bw())
+#     df = list()
+#     df$y = subset[gene, ]
+#     df$x = 1:length(df$y)
+#     df$col = subset.f
+#     df = as.data.frame(df)
+#     p <- ggplot(df, aes(
+#       x = col,
+#       y = y,
+#       color = col,
+#       ymin = mean(y),
+#       ymax = mean(y)
+#     )) +
+#       geom_pointrange(size = 2) + ylab("log2 Intensity") +
+#       ggtitle("SubsetArray") + theme(text = element_text(size = 20))
+#     print(p)
+#   }
+#   else{
+#     grid.text(label = paste("Gene:", gene, "is not in dataset"))
+#   }
+# }
 
-plotGC = function(input) {
-  gene = sub(" - .*", "", isolate(input$gene))
-  if (!is.na(match(gene, rownames(dataGC)))) {
-    theme_set(theme_bw())
-    df = list()
-    df$y = dataGC[gene, ]
-    df$x = 1:length(df$y)
-    df$col = dataGC.f
-    df = as.data.frame(df)
-    p <- ggplot(df, aes(
-      x = col,
-      y = y,
-      color = col,
-      ymin = mean(y),
-      ymax = mean(y)
-    )) +
-      scale_color_brewer(palette = "Set1") +
-      geom_pointrange(size = 2) + ylab("log2 Intensity") +
-      ggtitle("GC Array") + theme(text = element_text(size = 20))
-    print(p)
-  }
-  else{
-    grid.text(label = paste("Gene:", gene, "is not in dataset"))
-  }
-}
+# plotGC = function(input) {
+#   gene = sub(" - .*", "", isolate(input$gene))
+#   if (!is.na(match(gene, rownames(dataGC)))) {
+#     theme_set(theme_bw())
+#     df = list()
+#     df$y = dataGC[gene, ]
+#     df$x = 1:length(df$y)
+#     df$col = dataGC.f
+#     df = as.data.frame(df)
+#     p <- ggplot(df, aes(
+#       x = col,
+#       y = y,
+#       color = col,
+#       ymin = mean(y),
+#       ymax = mean(y)
+#     )) +
+#       scale_color_brewer(palette = "Set1") +
+#       geom_pointrange(size = 2) + ylab("log2 Intensity") +
+#       ggtitle("GC Array") + theme(text = element_text(size = 20))
+#     print(p)
+#   }
+#   else{
+#     grid.text(label = paste("Gene:", gene, "is not in dataset"))
+#   }
+# }
 
-plotSplicing = function(input) {
-  gene = sub(" - .*", "", isolate(input$gene))
-  genem = Human2Mouse[gene, ]
-  print(genem)
-  if (!is.na(match(genem, splicegenes))) {
-    myplotDEXSeq(
-      dxrGC,
-      genem,
-      legend = TRUE,
-      cex.axis = 1.2,
-      cex = 1.3,
-      lwd = 2.5 ,
-      norCounts = F,
-      splicing = T,
-      FDR = 0.1,
-      fitExpToVar = "type",
-      cex.main = 1
+# plotSplicing = function(input) {
+#   gene = sub(" - .*", "", isolate(input$gene))
+#   genem = Human2Mouse[gene, ]
+#   print(genem)
+#   if (!is.na(match(genem, splicegenes))) {
+#     myplotDEXSeq(
+#       dxrGC,
+#       genem,
+#       legend = TRUE,
+#       cex.axis = 1.2,
+#       cex = 1.3,
+#       lwd = 2.5 ,
+#       norCounts = F,
+#       splicing = T,
+#       FDR = 0.1,
+#       fitExpToVar = "type",
+#       cex.main = 1
+#     )
+#   }
+#   else{
+#     grid.text(label = paste("Gene:", gene, "is not in dataset"))
+#   }
+# }
+
+
+bulkRNAseq <- function(input) {
+  #read file
+  dataset <-
+    as.matrix(
+      read.table(
+        file.path('/home/mjf106/Bcell/data', input$dataset,'data.txt'),
+        sep = "\t",
+        header = TRUE,
+        row.names = 1
+      )
     )
-  }
-  else{
-    grid.text(label = paste("Gene:", gene, "is not in dataset"))
-  }
-}
-
-plotGCmiseq = function(input) {
+  samp.f <- as.matrix(
+    read.table(
+      file.path('/home/mjf106/Bcell/data', input$dataset, 'sampleInfo.txt'),
+      sep = "\t",
+      header = TRUE
+      
+    )
+  )
+  samp.f <- samp.f[,2]
+  samp.f <- factor(samp.f, levels=unique(samp.f), ordered=TRUE)
+  
+  #plot row
   gene = sub(" - .*", "", isolate(input$gene))
-  if (!is.na(match(gene, rownames(allDat)))) {
+  if (!is.na(match(gene, rownames(dataset)))) {
     theme_set(theme_bw())
     df = list()
-    df$y = allDat[gene, ]
+    df$y = dataset[gene, ]
     df$x = 1:length(df$y)
-    df$col = allDat.f
+    df$col = samp.f
     df = as.data.frame(df)
     p <- ggplot(df, aes(
       x = col,
@@ -163,12 +186,12 @@ shinyServer(function(input, output, session) {
   
   observeEvent(input$plot,
                {
-                 output$plotGCmiseq = renderPlot(plotGCmiseq(input))
-                 output$plotRS = renderPlot(plotRS(input))
-                 output$plotSubset = renderPlot(plotSubset(input))
-                 output$plotGC = renderPlot(plotGC(input))
+                 output$bulkRNAseq = renderPlot(bulkRNAseq(input))
+                 #output$plotRS = renderPlot(plotRS(input))
+                 #output$plotSubset = renderPlot(plotSubset(input))
+                 #output$plotGC = renderPlot(plotGC(input))
                  
-                 output$plotSplicing = renderPlot(plotSplicing(input))
+                 #output$plotSplicing = renderPlot(plotSplicing(input))
                })
   updateTypeAhead(session,
                   inputId = "gene",
