@@ -1,17 +1,11 @@
 library(shiny)
-#load("BcellShinyUpdate.RData")
-#load("GCmiSeq.RData")
-#load("newRNAseq.RData")
-#load("geneSet.RData")
-load("/home/mjf106/Bcell/geneSet2.RData")
+load("geneSet2.RData")
 library(shiny)
 library(shinyBS)
 library(shinybootstrap2)
 
-setwd('/home/mjf106/Bcell/data')
-
 shinybootstrap2::withBootstrap2({
-  shinyUI(fluidPage(# This is the variable containing the source for the typeahead. 
+  shinyUI(fluidPage(# This is the variable containing the source for the typeahead.
                     # It has been truncated to save space.
     sidebarLayout(
       sidebarPanel(
@@ -24,7 +18,7 @@ shinybootstrap2::withBootstrap2({
         selectInput(
           inputId = "dataset",
           label = "Dataset",
-          choices = substring(list.dirs(path = ".", recursive = FALSE),3)
+          choices = basename(list.dirs(path = "data", recursive = FALSE))
         ),
         tags$br(),
         actionButton("plot", "Plot Gene"),
@@ -41,18 +35,8 @@ shinybootstrap2::withBootstrap2({
           )
         )
       ),
-      mainPanel(fluidRow(
-        column(width = 12, plotOutput("bulkRNAseq", width = "100%"))
-      # ,  fluidRow(
-      #     column(width = 5, plotOutput("plotGC")),
-      #     column(width = 6, plotOutput(
-      #       "plotRS", width = 600, height = 350
-      #     )),
-      #     column(width = 5, plotOutput("plotSubset"))
-      #   ),
-      #   fluidRow(plotOutput("plotSplicing")),
-      #   fluidRow(tags$small(""))
-      ))
+      mainPanel(fluidRow(column(
+        width = 12, plotOutput("bulkRNAseq", width = "100%")
+      )))
     )))
 })
-#gctc <- as.matrix(read.table('GerminalCenterTimeCourse/GC_data.txt', sep = "\t", header = TRUE, row.names = 1))
