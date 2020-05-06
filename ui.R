@@ -1,15 +1,12 @@
 library(shiny)
-#.libPaths("/home/mchikina/R/x86_64-pc-linux-gnu-library/3.4","/home/mchikina/R/x86_64-pc-linux-gnu-library/3.1")
-load("BcellShinyUpdate.RData")
-load("GCmiSeq.RData")
-load("newRNAseq.RData")
-load("geneSet.RData")
 load("geneSet2.RData")
 library(shiny)
 library(shinyBS)
 library(shinybootstrap2)
+
 shinybootstrap2::withBootstrap2({
-  shinyUI(fluidPage(# This is the variable containing the source for the typeahead. It has been truncated to save space.
+  shinyUI(fluidPage(# This is the variable containing the source for the typeahead.
+                    # It has been truncated to save space.
     sidebarLayout(
       sidebarPanel(
         bsTypeAhead(
@@ -17,6 +14,11 @@ shinybootstrap2::withBootstrap2({
           label = "Look up gene (Human symbol):",
           value = "CD19",
           choices = geneSet2
+        ),
+        selectInput(
+          inputId = "dataset",
+          label = "Dataset",
+          choices = basename(list.dirs(path = "data", recursive = FALSE))
         ),
         tags$br(),
         actionButton("plot", "Plot Gene"),
@@ -33,19 +35,8 @@ shinybootstrap2::withBootstrap2({
           )
         )
       ),
-      mainPanel(fluidRow(
-        column(width = 12, plotOutput("plotGCmiseq", width = "100%")),
-        
-        fluidRow(
-          column(width = 5, plotOutput("plotGC")),
-          column(width = 6, plotOutput(
-            "plotRS", width = 600, height = 350
-          )),
-          column(width = 5, plotOutput("plotSubset"))
-        ),
-        fluidRow(plotOutput("plotSplicing")),
-        fluidRow(tags$small(""))
-        
-      ))
+      mainPanel(fluidRow(column(
+        width = 12, plotOutput("bulkRNAseq", width = "100%")
+      )))
     )))
 })
